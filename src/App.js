@@ -4,17 +4,29 @@ import "./styles.css";
 
 export default function App() {
   
-  const [tempValue, setTempValue] = useState("sharm");
+  const [name, setName] = useState("");
+  const [pass, setPass] =useState("");
 
   return (
     //JSX == JAVASCRIPT XML
     <div className="App">
-      <h1>{tempValue}</h1>
-      <button onClick={function(){
-        setTempValue("changed")
-      }} > Click to change the state</button>
-      <h2>Start editing to see some magic happen!</h2>
-      <Home/>
+      Name <input onChange={function(e){
+        debugger
+        setName(e.target.value)
+      }} type="text"></input>
+      {/* {name} */}
+      Password <input type="text" onChange={function(e){
+        debugger
+        setPass(e.target.value)
+      }}></input>
+      {/* {pass} */}
+      <br></br>
+      <button >Enter</button>
+
+
+      {name == "Sharmila" && pass =="sha" ? (<div>Login is successful</div>): (<div>Something is wrong</div>)}
+
+
     </div>
 
   );
