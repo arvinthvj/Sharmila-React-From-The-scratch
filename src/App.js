@@ -6,6 +6,15 @@ export default function App() {
   
   const [name, setName] = useState("");
   const [pass, setPass] =useState("");
+  const[isValidated , setIsValidated] = useState(false);
+
+  const handleValidation=()=>{
+    if(name == "Sharmila" && pass =="sha"){
+      setIsValidated(true);
+    }else{
+      setIsValidated(false);
+    }
+  }
 
   return (
     //JSX == JAVASCRIPT XML
@@ -21,10 +30,10 @@ export default function App() {
       }}></input>
       {/* {pass} */}
       <br></br>
-      <button >Enter</button>
+      <button onClick={()=>{handleValidation()}}>Enter</button>
 
 
-      {name == "Sharmila" && pass =="sha" ? (<div>Login is successful</div>): (<div>Something is wrong</div>)}
+      {isValidated ? (<div>Login is successful</div>): (<div>Something is wrong</div>)}
 
 
     </div>
