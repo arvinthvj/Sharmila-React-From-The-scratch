@@ -10,22 +10,28 @@ export default function App() {
 
   const handleValidation=()=>{
     if(name == "Sharmila" && pass =="sha"){
-      setIsValidated(true);
+      setIsValidated(true)
     }else{
-      setIsValidated(false);
+      setIsValidated(false)
+      return false
     }
+
+
+console.log("excecuted , because the function is done completely")
+
+
   }
 
   return (
     //JSX == JAVASCRIPT XML
     <div className="App">
       Name <input onChange={function(e){
-        debugger
+        
         setName(e.target.value)
       }} type="text"></input>
       {/* {name} */}
       Password <input type="text" onChange={function(e){
-        debugger
+     
         setPass(e.target.value)
       }}></input>
       {/* {pass} */}
