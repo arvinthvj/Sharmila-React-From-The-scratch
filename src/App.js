@@ -4,45 +4,19 @@ import "./styles.css";
 
 export default function App() {
   
-  const [name, setName] = useState("");
-  const [pass, setPass] =useState("");
-  const[isValidated , setIsValidated] = useState(false);
-
-  const handleValidation=()=>{
-    if(name == "Sharmila" && pass =="sha"){
-      setIsValidated(true)
-    }else{
-      setIsValidated(false)
-      return false
-    }
-
-
-console.log("excecuted , because the function is done completely")
-
-
+  const [data, setData] = useState([]);
+  const getData = async function(){
+        let receivedData = await fetch("https://rczversion2.herokuapp.com/api/shopData");
+        let fullData = await receivedData.json();
+        setData(fullData);
   }
-
   return (
-    //JSX == JAVASCRIPT XML
-    <div className="App">
-      Name <input onChange={function(e){
-        
-        setName(e.target.value)
-      }} type="text"></input>
-      {/* {name} */}
-      Password <input type="text" onChange={function(e){
-     
-        setPass(e.target.value)
-      }}></input>
-      {/* {pass} */}
-      <br></br>
-      <button onClick={()=>{handleValidation()}}>Enter</button>
+    <div>
+      <button onClick={()=> {getData()}}>Get the data</button>
 
-
-      {isValidated ? (<div>Login is successful</div>): (<div>Something is wrong</div>)}
-
-
+      {data.map(e=>(
+        <p> {e.category}</p>
+      ))}
     </div>
-
-  );
+  )
 }
